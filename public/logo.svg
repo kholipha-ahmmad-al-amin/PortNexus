@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 140" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pnLogoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="pnLogoCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+  </defs>
+
+  <!-- Brand Emblem (120x120) -->
+  <g transform="translate(10, 10)">
+    <rect width="120" height="120" rx="28" fill="url(#pnLogoBg)" />
+    <rect x="2" y="2" width="116" height="116" rx="26" fill="none" stroke="#334155" stroke-width="2" opacity="0.6" />
+    
+    <!-- Emblem Vectors scaled to 120 -->
+    <g transform="scale(0.234) translate(0, 0)">
+      <path d="M156 148 L216 114 L216 364 L156 398 Z" fill="url(#pnLogoCyan)" />
+      <path d="M216 114 L356 195 L296 229 L156 148 Z" fill="#38bdf8" opacity="0.9" />
+      <path d="M296 229 L356 195 L356 364 L296 398 Z" fill="#0284c7" />
+      <path d="M256 220 L316 255 L256 290 L196 255 Z" fill="#ffffff" />
+      <circle cx="256" cy="255" r="14" fill="#0284c7" />
+    </g>
+  </g>
+
+  <!-- Typography: PortNexus -->
+  <text x="150" y="78" font-family="'Space Grotesk', -apple-system, sans-serif" font-weight="700" font-size="52" fill="#0f172a" letter-spacing="-1.5">
+    Port<tspan fill="#0284c7">Nexus</tspan>
+  </text>
+  
+  <!-- Subtitle: Autonomous Trade Intelligence -->
+  <text x="154" y="106" font-family="'Inter', -apple-system, sans-serif" font-weight="600" font-size="14.5" fill="#64748b" letter-spacing="1.2">
+    AUTONOMOUS TRADE &amp; L/C AUDIT ENGINE
+  </text>
+</svg>

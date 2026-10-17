@@ -1,0 +1,45 @@
+# PortNexus Enterprise : Robots & AI Crawl Policy
+# https://portnexus.equisaas-bd.com/robots.txt
+
+User-agent: *
+Allow: /
+Allow: /docs.html
+Allow: /verify
+Allow: /api/health
+Allow: /api/mcp/sse
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /sitemap.xml
+Disallow: /api/history
+Disallow: /api/documents/upload
+
+# Major AI & Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Sitemap Location
+Sitemap: https://portnexus.equisaas-bd.com/sitemap.xml

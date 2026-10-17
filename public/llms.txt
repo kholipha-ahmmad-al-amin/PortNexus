@@ -1,0 +1,21 @@
+# PortNexus
+
+PortNexus is a trade document screening application. It compares selected fields extracted from letters of credit, invoices, and bills of lading, and marks missing or differing values for qualified human review.
+
+## Current scope
+
+- Parses selected SWIFT MT700 fields.
+- Extracts candidate document fields with the configured Gemini model. Tesseract OCR is available for supported images. Scanned PDF pages need a configured renderer for local OCR.
+- Runs a limited set of deterministic field comparisons. It does not decide bank acceptance or determine legal compliance.
+- Returns keyword-based HS code candidates from a small sample dataset. Bundled duty rates are unverified examples and must not be used for customs declarations.
+- Provides a static illustrative trade graph and a small local keyword corpus. Verify results against current official sources.
+- Exposes a stateless MCP Streamable HTTP endpoint at `/api/mcp`. Protected operations require organization authentication.
+- Produces a QR-linked HMAC-SHA-256 certificate only when complete evidence is durably persisted and signing is configured. It does not certify customs clearance or guarantee bank acceptance.
+
+## Public endpoints
+
+- Application: https://portnexus.equisaas-bd.com/
+- API health: https://portnexus.equisaas-bd.com/api/health
+- MCP: https://portnexus.equisaas-bd.com/api/mcp
+- Certificate verification: https://portnexus.equisaas-bd.com/verify?id=:certId
+- Source: https://github.com/kholipha-ahmmad-al-amin/PortNexus

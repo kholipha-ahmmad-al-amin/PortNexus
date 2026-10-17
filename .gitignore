@@ -1,0 +1,44 @@
+# Environment Variables & Secrets
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+*.env.json
+!.env.example
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.venv/
+__pycache__/
+*.pyc
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Logs & temp
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Cloudflare & Vercel
+.vercel
+.wrangler
+
+# Internal Architecture & Requirements Documentation (Private)
+docs/
+docs

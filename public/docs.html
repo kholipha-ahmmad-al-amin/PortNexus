@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation : PortNexus Enterprise Trade Intelligence</title>
+    <meta name="description" content="Technical documentation and API reference for PortNexus Autonomous Cross-Border Trade Compliance and Letter of Credit Audit Engine.">
+    <meta name="keywords" content="PortNexus Documentation, UCP 600 Rules Reference, SWIFT MT700 Parser API, MCP SSE Integration, WCO HS Code Tariff Engine, TradeTech API">
+    <meta name="author" content="Team EquiSaaS BD">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#0284c7">
+    <link rel="canonical" href="https://portnexus.equisaas-bd.com/docs.html">
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="PortNexus Enterprise">
+    <meta property="og:url" content="https://portnexus.equisaas-bd.com/docs.html">
+    <meta property="og:title" content="PortNexus Canonical Documentation &amp; API Reference">
+    <meta property="og:description" content="API reference, UCP 600 rules engine, Model Context Protocol (MCP) integration, and WCO tariff classifications.">
+    <meta property="og:image" content="https://portnexus.equisaas-bd.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="PortNexus Documentation and API Reference">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@equisaas">
+    <meta name="twitter:creator" content="@equisaas">
+    <meta name="twitter:url" content="https://portnexus.equisaas-bd.com/docs.html">
+    <meta name="twitter:title" content="PortNexus Canonical Documentation &amp; API Reference">
+    <meta name="twitter:description" content="API reference, UCP 600 rules engine, Model Context Protocol (MCP) integration, and WCO tariff classifications.">
+    <meta name="twitter:image" content="https://portnexus.equisaas-bd.com/og-image.png">
+
+    <!-- Resource Hints & Preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://qpzjrhvuxtvmkhdrusub.supabase.co">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+
+    <!-- Schema.org Documentation & TechArticle Graph (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://portnexus.equisaas-bd.com/#organization",
+          "name": "PortNexus",
+          "legalName": "PortNexus TradeTech Solutions",
+          "alternateName": "PortNexus Enterprise",
+          "url": "https://portnexus.equisaas-bd.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://portnexus.equisaas-bd.com/og-image.png",
+            "width": 1200,
+            "height": 630
+          },
+          "image": "https://portnexus.equisaas-bd.com/og-image.png",
+          "description": "Autonomous Cross-Border Trade Compliance and L/C Audit Engine",
+          "slogan": "Zero Customs Demurrage. Zero Bank Payment Rejections.",
+          "sameAs": [
+            "https://github.com/kholipha-ahmmad-al-amin/PortNexus",
+            "https://portnexus.equisaas-bd.com"
+          ],
+          "creator": {
+            "@type": "Organization",
+            "name": "Team EquiSaaS BD",
+            "url": "https://equisaas-bd.com/"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "technical support",
+            "url": "https://portnexus.equisaas-bd.com/docs.html",
+            "availableLanguage": ["English", "Bengali"]
+          }
+        },
+        {
+          "@type": "TechArticle",
+          "@id": "https://portnexus.equisaas-bd.com/docs.html#article",
+          "headline": "PortNexus Enterprise Trade Intelligence & API Reference",
+          "description": "Complete technical documentation, REST API specifications, UCP 600 banking rules engine, and Model Context Protocol (MCP) integration guides.",
+          "url": "https://portnexus.equisaas-bd.com/docs.html",
+          "inLanguage": "en-US",
+          "mainEntityOfPage": "https://portnexus.equisaas-bd.com/docs.html",
+          "datePublished": "2026-01-15T00:00:00Z",
+          "dateModified": "2026-10-17T06:00:00Z",
+          "author": {
+            "@type": "Organization",
+            "name": "Team EquiSaaS BD",
+            "url": "https://equisaas-bd.com/"
+          },
+          "publisher": {
+            "@id": "https://portnexus.equisaas-bd.com/#organization"
+          },
+          "articleSection": "TradeTech, API Reference, UCP 600, MCP SSE"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://portnexus.equisaas-bd.com/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://portnexus.equisaas-bd.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Documentation",
+              "item": "https://portnexus.equisaas-bd.com/docs.html"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://portnexus.equisaas-bd.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is PortNexus and how does it prevent export payment rejections?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "PortNexus is an enterprise autonomous TradeTech platform that cross-examines export trade packages (Commercial Invoices, Bills of Lading, Packing Lists, and SWIFT MT700 letters of credit) against International Chamber of Commerce (ICC) UCP 600 rules before cargo departs port. It catches spelling mismatches, late shipment dates, quantity tolerance variances, and entity inconsistencies, preventing expensive bank payment rejections and customs demurrage penalties."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does PortNexus audit documents under ICC UCP 600 Article 18(c)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Under ICC UCP 600 Article 18(c), the goods description in a commercial invoice must correspond verbatim with the description in the letter of credit (Field 45A). PortNexus isolates Field 45A and executes character-exact and semantic string tokenization against the invoice description. Any character omission, fabric composition mismatch, or unauthorized addition is immediately flagged with exact line citations and remediation instructions."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does the WCO HS Code Tariff Engine calculate statutory duties?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The WCO HS Code Tariff Engine maps raw commodity descriptions to 6-digit and 8-digit Harmonized System codes using classification models. It automatically calculates statutory duties including Customs Duty (CD), Regulatory Duty (RD), Value Added Tax (VAT), Advance Tax (AT), and Advance Income Tax (AIT), providing total assessable value in both USD and local currency (BDT)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How can autonomous AI assistants connect to PortNexus via Model Context Protocol (MCP)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "PortNexus exposes a live Server-Sent Events (SSE) endpoint at https://portnexus.equisaas-bd.com/api/mcp/sse. AI tools and agents including Claude Desktop, Cursor, and Gemini can connect directly using mcp-remote to invoke audit_letter_of_credit, classify_hs_code, query_trade_graph, search_trade_regulations, and parse_swift_mt700."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the PortNexus Pre-Customs Clearance Inspection Certificate?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The PortNexus Pre-Customs Clearance Certificate is an official, bank-ready PDF compliance document generated after successful documentary cross-examination. Each certificate contains an immutable SHA-256 digital fingerprint calculated from core trade parameters, a detailed UCP 600 compliance score, and an embedded dynamic QR code linking directly to the live verification portal."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <style>
+        .docs-layout {
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr);
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .docs-sidebar {
+            position: sticky;
+            top: 5rem;
+            height: calc(100vh - 6rem);
+            overflow-y: auto;
+            border-right: 1px solid var(--color-border-subtle);
+            padding-right: 1rem;
+        }
+
+        .docs-sidebar h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-muted);
+            margin: 1.25rem 0 0.5rem 0;
+        }
+
+        .docs-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .docs-sidebar li {
+            margin-bottom: 0.25rem;
+        }
+
+        .docs-sidebar a {
+            display: block;
+            padding: 0.35rem 0.65rem;
+            border-radius: var(--radius-sm);
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+
+        .docs-sidebar a:hover, .docs-sidebar a.active {
+            color: var(--color-accent);
+            background-color: var(--color-accent-subtle);
+        }
+
+        .docs-content {
+            min-width: 0;
+        }
+
+        .docs-content section {
+            margin-bottom: 3.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border-subtle);
+        }
+
+        .docs-content h2 {
+            font-size: 1.85rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text-primary);
+        }
+
+        .docs-content h3 {
+            font-size: 1.3rem;
+            margin: 1.75rem 0 0.5rem 0;
+            color: var(--color-text-primary);
+        }
+
+        .param-table-wrapper {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 1.25rem 0;
+            border: 1px solid var(--color-border-subtle);
+            border-radius: var(--radius-md);
+        }
+
+        .param-table {
+            width: 100%;
+            min-width: 520px;
+            border-collapse: collapse;
+            margin: 0;
+            font-size: 0.88rem;
+        }
+
+        .param-table th, .param-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border-subtle);
+        }
+
+        .param-table th {
+            background-color: var(--color-surface-subtle);
+            font-weight: 600;
+        }
+
+        @media (max-width: 900px) {
+            .docs-layout {
+                grid-template-columns: 1fr;
+            }
+            .docs-sidebar {
+                position: static;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--color-border-subtle);
+                padding-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="top-nav" role="banner">
+        <div class="nav-container">
+            <div class="brand-group">
+                <a href="/" style="display: flex; align-items: center; gap: 0.85rem; text-decoration: none; color: inherit;">
+                    <img src="/favicon.svg" alt="PortNexus Emblem" width="38" height="38" style="border-radius: 9px; flex-shrink: 0;">
+                    <div class="brand-text">
+                        <span class="brand-title">PortNexus</span>
+                        <span class="brand-subtitle">Enterprise Trade Intelligence Platform</span>
+                    </div>
+                </a>
+            </div>
+            <div class="nav-links" style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+                <a href="/" class="btn btn-secondary">Platform Workspace</a>
+                <a href="https://github.com/kholipha-ahmmad-al-amin/PortNexus" target="_blank" class="btn btn-secondary">GitHub Repository</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="docs-layout">
+        <aside class="docs-sidebar">
+            <h3>Overview</h3>
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#architecture">System Architecture</a></li>
+                <li><a href="#use-cases">Target Use Cases</a></li>
+            </ul>
+
+            <h3>AI Agent Integration (MCP)</h3>
+            <ul>
+                <li><a href="#mcp-overview">Model Context Protocol (MCP)</a></li>
+                <li><a href="#claude-desktop">Claude Desktop Integration</a></li>
+                <li><a href="#cursor-ide">Cursor & Gemini Spark Setup</a></li>
+                <li><a href="#mcp-tools">Available MCP Tools</a></li>
+            </ul>
+
+            <h3>Core Rulebooks</h3>
+            <ul>
+                <li><a href="#ucp600">ICC UCP 600 Standards</a></li>
+                <li><a href="#wco-hscode">WCO HS Classification</a></li>
+                <li><a href="#graph-rag">Graph RAG Trade Corridors</a></li>
+            </ul>
+
+            <h3>API Reference</h3>
+            <ul>
+                <li><a href="#api-audit">POST /api/audit/trade-package</a></li>
+                <li><a href="#api-hscode">POST /api/hscode/classify</a></li>
+                <li><a href="#api-graph">POST /api/graph/query</a></li>
+                <li><a href="#api-rag">GET /api/rag/search</a></li>
+            </ul>
+        </aside>
+
+        <main class="docs-content">
+            <section id="intro">
+                <h2>Introduction to PortNexus</h2>
+                <!-- AEO Answer Snippet -->
+                <div class="answer-snippet" aria-label="Technical Definition">
+                    <span class="answer-snippet-label">Answer Engine Definition : Trade Intelligence Architecture</span>
+                    <p>PortNexus is an autonomous TradeTech system that cross-examines export trade packages against ICC UCP 600 rules and WCO tariff schedules. It prevents bank payment refusals and customs demurrage by validating Field 45A descriptions, dates, and entity data before shipping departure.</p>
+                </div>
+                <p>PortNexus is an autonomous trade compliance and documentary credit risk-management platform designed for exporters, freight forwarders, and trade finance institutions. It automates the cross-examination of commercial trade documents (Commercial Invoices, Bills of Lading, Packing Lists, Certificates of Origin) against international commercial credit stipulations governed by ICC UCP 600 rules.</p>
+                <p>By identifying typographical deviations, goods description mismatches, and deadline violations before container dispatch, PortNexus eliminates port demurrage fines and bank payment rejections.</p>
+            </section>
+
+            <section id="architecture">
+                <h2>System Architecture</h2>
+                <!-- AEO Answer Snippet -->
+                <div class="answer-snippet" aria-label="System Architecture Summary">
+                    <span class="answer-snippet-label">Answer Engine Directive : Enterprise Multi-Layer Design</span>
+                    <p>The PortNexus architecture separates intelligence from interface, utilizing Node.js microservices, Supabase PostgreSQL persistence, Google Gemini multimodal vision, and Model Context Protocol (MCP) Server-Sent Events to deliver deterministic trade compliance audits under 1.5 seconds.</p>
+                </div>
+                <p>PortNexus is built on a high-throughput, microservice-ready Node.js engine exposed via standard HTTP REST and Model Context Protocol (MCP) Server-Sent Events (SSE). It features three core analytical engines:</p>
+                <ul>
+                    <li><strong>ICC UCP 600 Discrepancy Engine:</strong> Deterministic 14-point audit framework executing verbatim reconciliation across commercial invoices, bills of lading, and letters of credit.</li>
+                    <li><strong>WCO HS Code & Tariff Engine:</strong> Natural language commodity classifier mapping items to 6-digit and 8-digit Harmonized System codes with full statutory duty calculations (CD, RD, VAT, AIT).</li>
+                    <li><strong>Graph RAG Multi-Hop Engine:</strong> Relational knowledge graph connecting commodities, ports, international shipping corridors, bilateral free trade agreements (FTAs), and carbon compliance regulations (EU CBAM/CSDDD).</li>
+                </ul>
+            </section>
+
+            <section id="mcp-overview">
+                <h2>AI Agent Integration via Model Context Protocol (MCP)</h2>
+                <p>PortNexus acts as a dedicated Model Context Protocol (MCP) server. External AI agents such as Claude Desktop, Gemini Spark, Cursor, or autonomous orchestration pipelines (e.g. n8n, LangGraph) can connect directly to PortNexus over Server-Sent Events (SSE) to audit trade files or query tariffs.</p>
+
+                <div class="stat-box" style="margin: 1.5rem 0;">
+                    <span class="stat-label">Live MCP SSE Endpoint URL</span>
+                    <span class="stat-value" style="font-size: 1.1rem; color: var(--color-accent);">https://portnexus.equisaas-bd.com/api/mcp/sse</span>
+                </div>
+
+                <h3 id="claude-desktop">Claude Desktop Configuration</h3>
+                <p>To connect Claude Desktop to PortNexus, add the following entry to your <code>claude_desktop_config.json</code> file:</p>
+                <pre class="code-block">{
+  "mcpServers": {
+    "portnexus": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://portnexus.equisaas-bd.com/api/mcp/sse"]
+    }
+  }
+}</pre>
+
+                <h3 id="cursor-ide">Cursor & Gemini Spark Integration</h3>
+                <p>In Cursor Settings or Gemini Spark Custom Tools, register a new MCP tool with:</p>
+                <ul>
+                    <li><strong>Type:</strong> SSE (Server-Sent Events)</li>
+                    <li><strong>URL:</strong> <code>https://portnexus.equisaas-bd.com/api/mcp/sse</code></li>
+                </ul>
+
+                <h3 id="mcp-tools">Exposed MCP Tools</h3>
+                <div class="param-table-wrapper">
+                    <table class="param-table">
+                        <thead>
+                            <tr>
+                                <th>Tool Name</th>
+                                <th>Description</th>
+                                <th>Input Schema</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>audit_letter_of_credit</code></td>
+                                <td>Audits multi-document trade packages against ICC UCP 600 banking rules.</td>
+                                <td><code>{ lc: Object, invoice: Object, bl: Object }</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>classify_hs_code</code></td>
+                                <td>Predicts 8-digit HS Code and computes statutory customs duties.</td>
+                                <td><code>{ commodityDescription: String, invoiceValueUsd: Number }</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>query_trade_graph</code></td>
+                                <td>Traverses Graph RAG for transit times, FTAs, and compliance directives.</td>
+                                <td><code>{ commodityId: String, destinationPortId: String }</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>search_trade_regulations</code></td>
+                                <td>Performs Contextual RAG search across international trade statutes.</td>
+                                <td><code>{ query: String }</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="ucp600">
+                <h2>ICC UCP 600 Core Standards</h2>
+                <p>The Uniform Customs and Practice for Documentary Credits (UCP 600) is the official set of rules issued by the International Chamber of Commerce (ICC) governing documentary letters of credit worldwide.</p>
+                <h3>Article 18(c) : Goods Description Requirement</h3>
+                <p>The description of goods, services, or performance in a commercial invoice must correspond strictly with that appearing in the credit. Unlike other stipulated documents (which may use general terms not in conflict), the commercial invoice must reflect the exact wording of Field 45A without alteration or abbreviation.</p>
+                <h3>Article 20 : Marine Transport Document Inspection</h3>
+                <p>The bill of lading must indicate that goods have been shipped on board a named vessel at the designated port of loading on or before the latest shipment date specified in Field 44C.</p>
+            </section>
+
+            <section id="api-audit">
+                <h2>REST API Reference</h2>
+                <h3>POST /api/audit/trade-package</h3>
+                <p>Evaluates an export documentation packet for UCP 600 compliance.</p>
+                <pre class="code-block">curl -X POST https://portnexus.equisaas-bd.com/api/audit/trade-package \
+  -H "Content-Type: application/json" \
+  -d '{
+    "lc": {
+      "beneficiary": "Apex Textile Mills Ltd, Dhaka, Bangladesh",
+      "applicant": "H&M Hennes & Mauritz GBC AB, Stockholm, Sweden",
+      "goodsDescription": "100% Combed Cotton Knitted T-Shirts in Assorted Sizes (Export Quality)",
+      "amount": 125000,
+      "currency": "USD",
+      "portOfLoading": "Chattogram Port, Bangladesh",
+      "portOfDischarge": "Port of Rotterdam, Netherlands",
+      "latestShipmentDate": "2026-11-15"
+    },
+    "invoice": {
+      "beneficiary": "Apex Textile Mills Ltd, Dhaka, Bangladesh",
+      "applicant": "H&M Hennes & Mauritz GBC AB, Stockholm, Sweden",
+      "goodsDescription": "100% Combed Cotton Knitted T-Shirts in Assorted Sizes (Export Quality)",
+      "amount": 125000,
+      "currency": "USD"
+    },
+    "bl": {
+      "portOfLoading": "Chattogram Port, Bangladesh",
+      "portOfDischarge": "Port of Rotterdam, Netherlands",
+      "onBoardDate": "2026-11-10"
+    }
+  }'</pre>
+            </section>
+        </main>
+    </div>
+
+    <footer class="app-footer" role="contentinfo">
+        <div class="footer-container" style="max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; width: 100%;">
+                <div style="display: flex; align-items: center; gap: 0.85rem;">
+                    <img src="/favicon.svg" alt="PortNexus Emblem" width="34" height="34" style="border-radius: 8px; flex-shrink: 0;">
+                    <div>
+                        <div><strong>PortNexus Enterprise</strong> &bull; Canonical Technical Documentation</div>
+                        <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 0.15rem;">Conforms to ICC UCP 600 banking rules &bull; WCO Harmonized System &bull; ISO 15022</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 0.75rem 1.25rem; align-items: center; flex-wrap: wrap;">
+                    <a href="/" style="color: var(--color-text-secondary); text-decoration: none; font-weight: 500;">Platform Workspace</a>
+                    <a href="https://github.com/kholipha-ahmmad-al-amin/PortNexus" target="_blank" rel="noopener" style="color: var(--color-text-secondary); text-decoration: none; font-weight: 500;">GitHub</a>
+                    <a href="/api/health" target="_blank" rel="noopener" style="color: var(--color-text-secondary); text-decoration: none; font-weight: 500;">API Status</a>
+                    <a href="/sitemap.xml" target="_blank" rel="noopener" style="color: var(--color-text-secondary); text-decoration: none; font-weight: 500;">Sitemap</a>
+                    <a href="/llms.txt" target="_blank" rel="noopener" style="color: var(--color-text-secondary); text-decoration: none; font-weight: 500;">llms.txt</a>
+                </div>
+            </div>
+
+            <!-- Team EquiSaaS BD Attribution -->
+            <div class="agency-attribution-bar">
+                <div>Project by <a href="https://equisaas-bd.com/" target="_blank" rel="noopener">Team EquiSaaS BD</a></div>
+                <div>Technical Documentation &bull; CloudCamp Bangladesh 2026</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

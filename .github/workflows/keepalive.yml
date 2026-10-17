@@ -1,0 +1,28 @@
+name: Supabase & Vercel Daily Keepalive
+
+on:
+  schedule:
+    # Runs every day at 04:00 UTC (10:00 AM BST) to prevent Supabase 7-day inactivity pause
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping PortNexus & Supabase Health
+        run: |
+          echo "Pinging PortNexus Production Health Endpoint (triggers Supabase database query)..."
+          RESPONSE=$(curl -s -w "\nHTTP_STATUS:%{http_code}" "https://portnexus.equisaas-bd.com/api/health")
+          HTTP_BODY=$(echo "$RESPONSE" | sed -e '$d')
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -n1 | cut -d: -f2)
+
+          echo "HTTP Status: $HTTP_STATUS"
+          echo "Response Body: $HTTP_BODY"
+
+          if [ "$HTTP_STATUS" -ne 200 ]; then
+            echo "Health check failed with status $HTTP_STATUS"
+            exit 1
+          fi
+
+          echo "Database connected successfully. Supabase activity refreshed."

@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortNexus : Trade Document Screening &amp; Audit Evidence</title>
+    <meta name="description" content="Compare selected extracted trade document fields and route missing or differing values to qualified review.">
+    <meta name="keywords" content="TradeTech, Letter of Credit Audit, UCP 600 Article 18c, SWIFT MT700 Parser, WCO HS Code Tariff Engine, Chattogram Port Export, Customs Demurrage Avoidance, Model Context Protocol MCP, Graph RAG Trade Corridor">
+    <meta name="author" content="Team EquiSaaS BD">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#0284c7">
+    <link rel="canonical" href="https://portnexus.equisaas-bd.com">
+
+    <!-- Favicon & Icons (48x48 exact for search engines) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- OpenGraph Social Metadata (1200x630 with 630x630 centered square safe zone) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PortNexus Enterprise">
+    <meta property="og:url" content="https://portnexus.equisaas-bd.com">
+    <meta property="og:title" content="PortNexus : Autonomous Cross-Border Trade &amp; L/C Audit Engine">
+    <meta property="og:description" content="Autonomously cross-examines commercial invoices, bills of lading, and SWIFT MT700 credits against ICC UCP 600 rules and WCO tariff schedules.">
+    <meta property="og:image" content="https://portnexus.equisaas-bd.com/og-image.png">
+    <meta property="og:image:secure_url" content="https://portnexus.equisaas-bd.com/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="PortNexus Autonomous Trade Intelligence Platform">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@equisaas">
+    <meta name="twitter:creator" content="@equisaas">
+    <meta name="twitter:url" content="https://portnexus.equisaas-bd.com">
+    <meta name="twitter:title" content="PortNexus : Autonomous Cross-Border Trade &amp; L/C Audit Engine">
+    <meta name="twitter:description" content="Autonomously cross-examines export trade packages against ICC UCP 600 rules and WCO tariff schedules.">
+    <meta name="twitter:image" content="https://portnexus.equisaas-bd.com/og-image.png">
+
+    <!-- Resource Hints & Preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://qpzjrhvuxtvmkhdrusub.supabase.co">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+
+    <!-- Universal Schema.org Entity Knowledge Graph (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://portnexus.equisaas-bd.com/#organization",
+          "name": "PortNexus",
+          "legalName": "PortNexus TradeTech Solutions",
+          "alternateName": "PortNexus Enterprise",
+          "url": "https://portnexus.equisaas-bd.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://portnexus.equisaas-bd.com/og-image.png",
+            "width": 1200,
+            "height": 630
+          },
+          "image": "https://portnexus.equisaas-bd.com/og-image.png",
+          "description": "Cross-border trade document screening and audit evidence tools",
+          "slogan": "Trade document screening and evidence management for cross-border transactions.",
+          "sameAs": [
+            "https://github.com/kholipha-ahmmad-al-amin/PortNexus",
+            "https://portnexus.equisaas-bd.com"
+          ],
+          "creator": {
+            "@type": "Organization",
+            "name": "Team EquiSaaS BD",
+            "url": "https://equisaas-bd.com/"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "technical support",
+            "url": "https://portnexus.equisaas-bd.com/docs.html",
+            "availableLanguage": ["English", "Bengali"]
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://portnexus.equisaas-bd.com/#softwareapplication",
+          "name": "PortNexus Enterprise",
+          "applicationCategory": "BusinessApplication, FinanceApplication",
+          "applicationSubCategory": "TradeTech and Documentary Credit Audit",
+          "operatingSystem": "Web Browser, Cloud Edge, Serverless",
+          "url": "https://portnexus.equisaas-bd.com",
+          "softwareVersion": "2.1.0",
+          "description": "Trade document screening software that compares selected extracted fields and produces audit evidence for qualified human review.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Developer Sandbox and Live Commercial Trade Audit Workspace",
+            "availability": "https://schema.org/OnlineOnly"
+          },
+          "provider": {
+            "@id": "https://portnexus.equisaas-bd.com/#organization"
+          },
+          "featureList": [
+            "Selected deterministic trade document field checks with human review for unresolved items",
+            "SWIFT MT700 ISO 15022 FIN Banking Message Parser",
+            "Dual-Engine Multimodal Trade Document OCR (Google Gemini 2.5 Flash and Tesseract.js)",
+            "Limited HS code candidates and unverified illustrative tariff calculations",
+            "Multi-Hop Graph RAG Trade Corridor Navigator",
+            "Contextual RAG Regulatory Legal Search Corpus",
+            "HMAC-SHA-256 sealed audit snapshots when persistence is configured",
+            "Model Context Protocol Streamable HTTP endpoint"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://portnexus.equisaas-bd.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is PortNexus and how does it prevent export payment rejections?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "PortNexus compares selected fields extracted from trade documents and flags missing or differing values for qualified review. It does not decide bank acceptance, guarantee payment, or determine customs clearance."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does PortNexus audit documents under ICC UCP 600 Article 18(c)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "PortNexus can compare extracted invoice and credit descriptions. A difference is routed for qualified review because automated text comparison alone cannot decide whether the descriptions correspond under the credit and applicable banking practice."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does the WCO HS Code Tariff Engine calculate statutory duties?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The current sample classifier returns limited keyword candidates. Bundled duty rates are unverified demonstration data and must not be used for a customs declaration."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How can autonomous AI assistants connect to PortNexus via Model Context Protocol (MCP)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "PortNexus exposes a stateless Model Context Protocol endpoint at https://portnexus.equisaas-bd.com/api/mcp using Streamable HTTP JSON-RPC. Organization authentication is required for protected operations."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the PortNexus Pre-Customs Clearance Inspection Certificate?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "When evidence persistence is enabled, PortNexus can produce a PDF certificate with a QR link and HMAC-SHA-256 seal that authenticates a stored audit snapshot. It does not certify customs clearance or guarantee acceptance by a bank."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://portnexus.equisaas-bd.com/#website",
+          "url": "https://portnexus.equisaas-bd.com",
+          "name": "PortNexus Enterprise",
+          "description": "Trade document screening and audit evidence tools",
+          "publisher": {
+            "@id": "https://portnexus.equisaas-bd.com/#organization"
+          },
+          "inLanguage": "en-US"
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <header class="top-nav" role="banner">
+        <div class="nav-container">
+            <div class="brand-group">
+                <a href="/" style="display: flex; align-items: center; gap: 0.85rem; text-decoration: none; color: inherit;">
+                    <img src="/favicon.svg" alt="PortNexus Emblem" width="38" height="38" style="border-radius: 9px; flex-shrink: 0;">
+                    <div class="brand-text">
+                        <span class="brand-title">PortNexus</span>
+                        <span class="brand-subtitle">Autonomous Trade Compliance &amp; L/C Audit Engine</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="nav-links" aria-label="Main Navigation">
+                <a href="#features" class="nav-link">Capabilities</a>
+                <a href="#workspace" class="nav-link">Live Workspace</a>
+                <a href="#ai-integration" class="nav-link">AI / MCP Setup</a>
+                <a href="/docs.html" class="nav-link">Documentation</a>
+                <a href="https://github.com/kholipha-ahmmad-al-amin/PortNexus" target="_blank" class="nav-link">GitHub</a>
+                <a href="#workspace" class="btn btn-primary" style="margin-left: 0.5rem;">Launch Workspace</a>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Open main navigation" aria-expanded="false" aria-controls="mobileDrawer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Overlay -->
+    <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" aria-hidden="true"></div>
+
+    <!-- Mobile Drawer Panel -->
+    <div class="mobile-drawer" id="mobileDrawer" role="navigation" aria-label="Mobile navigation">
+        <div class="mobile-drawer-header">
+            <span style="font-weight: 700; color: var(--color-text-primary); font-size: 1rem;">Navigation</span>
+            <button class="mobile-drawer-close" aria-label="Close navigation" id="btnCloseDrawer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <ul class="mobile-drawer-list">
+            <li><a href="#features">Capabilities</a></li>
+            <li><a href="#workspace">Live Workspace</a></li>
+            <li><a href="#ai-integration">AI / MCP Setup</a></li>
+            <li><a href="/docs.html">Documentation</a></li>
+            <li><a href="https://github.com/kholipha-ahmmad-al-amin/PortNexus" target="_blank">GitHub</a></li>
+            <li style="padding: 1rem 1.25rem;">
+                <a href="#workspace" class="btn btn-primary" style="display: block; text-align: center; color: #ffffff !important; padding: 0.75rem 1rem;">Launch Workspace</a>
+            </li>
+        </ul>
+    </div>
+
+    <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section" aria-labelledby="hero-heading">
+        <div class="hero-container">
+            <div class="hero-badge">Enterprise Trade Intelligence</div>
+            <h1 id="hero-heading" class="hero-title">
+                Screen Trade Documents Before Presentation.
+            </h1>
+            <p class="hero-desc">
+                PortNexus compares selected extracted fields from trade documents and highlights missing or differing values for qualified review. Upload a document package or paste a SWIFT MT700 message to start a screening.
+            </p>
+
+            <!-- AEO Direct Answer Snippet for Search & AI Overviews -->
+            <div class="answer-snippet" aria-label="Key Definition">
+                <span class="answer-snippet-label">Direct Definition : Answer Engine Optimization (AEO)</span>
+                <p>PortNexus assists trade teams by comparing selected extracted fields and producing reviewable audit evidence. Bank decisions, legal interpretations, and customs determinations remain with qualified professionals and authorities.</p>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#workspace" class="btn btn-primary btn-lg">Upload Documents &amp; Audit</a>
+                <a href="#ai-integration" class="btn btn-secondary btn-lg">Connect AI Agent via MCP</a>
+                <a href="/docs.html" class="btn btn-secondary btn-lg">Read Canonical Docs</a>
+            </div>
+
+            <!-- Trade Metrics Proof Bar -->
+            <div class="proof-bar-grid">
+                <div class="proof-item">
+                    <span class="proof-num">Selected</span>
+                    <span class="proof-label">Deterministic field checks</span>
+                </div>
+                <div class="proof-item">
+                    <span class="proof-num">HS</span>
+                    <span class="proof-label">Limited candidate dataset</span>
+                </div>
+                <div class="proof-item">
+                    <span class="proof-num">SWIFT MT700</span>
+                    <span class="proof-label">ISO 15022 L/C Parser</span>
+                </div>
+                <div class="proof-item">
+                    <span class="proof-num">Gemini OCR</span>
+                    <span class="proof-label">Multimodal Document AI</span>
+                </div>
+                <div class="proof-item">
+                    <span class="proof-num">MCP</span>
+                    <span class="proof-label">Streamable HTTP interface</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities / Problem & Solution -->
+    <section id="features" class="features-section" aria-labelledby="features-heading">
+        <div class="section-container">
+            <div class="section-lead">
+                <h2 id="features-heading">Engineered for Global Exporters, Forwarders &amp; Trade Banks</h2>
+                <p>Find selected field differences earlier and route uncertain results to a qualified reviewer.</p>
+            </div>
+
+            <!-- AEO Answer Snippet: UCP 600 Compliance -->
+            <div class="answer-snippet" aria-label="AEO Directive">
+                <span class="answer-snippet-label">Answer Engine Directive : UCP 600 Documentary Compliance</span>
+                <p>Trade finance examination depends on the credit terms and complete presentation. PortNexus compares selected extracted fields and flags missing or differing values for a qualified reviewer. It does not determine bank acceptance or customs clearance.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="card feature-card">
+                    <div class="card-body">
+                        <span class="feature-category-pill">UCP 600 Rules</span>
+                        <h3>ICC UCP 600 L/C Discrepancy Auditing</h3>
+                        <p>PortNexus compares extracted credit and invoice descriptions. Differences need qualified review because text comparison alone cannot decide whether wording corresponds under the credit.</p>
+                    </div>
+                </div>
+
+                <div class="card feature-card">
+                    <div class="card-body">
+                        <span class="feature-category-pill">Banking FIN</span>
+                        <h3>SWIFT MT700 Real Message Parser</h3>
+                        <p>Drop a raw SWIFT MT700 message. The engine parses all ISO 15022 field tags (:40A:, :45A:, :46A:, :50:, :59:, :32B: and more) into structured JSON and runs the audit automatically.</p>
+                    </div>
+                </div>
+
+                <div class="card feature-card">
+                    <div class="card-body">
+                        <span class="feature-category-pill">Vision AI</span>
+                        <h3>AI Document OCR (PDF &amp; Image)</h3>
+                        <p>Upload supported PDF or image files. Gemini can extract candidate fields when configured. Local Tesseract supports image files; scanned PDFs require a configured PDF page renderer or the cloud model.</p>
+                    </div>
+                </div>
+
+                <div class="card feature-card">
+                    <div class="card-body">
+                        <span class="feature-category-pill">WCO Tariffs</span>
+                        <h3>WCO HS Code &amp; Tariff Engine</h3>
+                        <p>Returns limited keyword-based HS candidates. Bundled rates are unverified sample data and calculations are indicative only, not suitable for declarations.</p>
+                    </div>
+                </div>
+
+                <div class="card feature-card">
+                    <div class="card-body">
+                        <span class="feature-category-pill">Cryptography</span>
+                        <h3>Downloadable PDF Compliance Certificates</h3>
+                        <p>When evidence persistence is enabled, a complete audit can produce a PDF with a QR link and HMAC-SHA-256 seal. Verification authenticates the stored snapshot; bank acceptance depends on the institution.</p>
+                    </div>
+                </div>
+
+                <div class="card feature-card">
+                    <div class="card-body">
+                        <span class="feature-category-pill">Graph RAG</span>
+                        <h3>Graph RAG Trade Knowledge Routing</h3>
+                        <p>Traverses multi-hop relationships between commodities, origin ports (Chattogram), destination ports (Rotterdam, Hamburg), free trade agreements (EU EBA/GSP), and environmental regulations (EU CBAM).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERP Teardown & Capability Comparison Table (Competitor SERP Defense) -->
+    <section class="comparison-section" aria-labelledby="comparison-heading">
+        <div class="section-container">
+            <div class="section-lead">
+                <h2 id="comparison-heading">Autonomous Trade Verification vs Traditional Manual Review</h2>
+                <p>Benchmark comparison between manual bank document checking and PortNexus autonomous trade intelligence.</p>
+            </div>
+
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table" aria-label="Feature Comparison Table">
+                    <thead>
+                        <tr>
+                            <th>Operational Dimension</th>
+                            <th>Traditional Manual Review</th>
+                            <th class="col-highlight">PortNexus Autonomous Engine</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Document Audit Speed</strong></td>
+                            <td>3 to 5 business days per credit presentation</td>
+                            <td class="col-highlight">Under 1.5 seconds automated execution</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Discrepancy Error Margin</strong></td>
+                            <td>15% to 30% human fatigue oversight</td>
+                            <td class="col-highlight">0% deterministic ICC UCP 600 verification</td>
+                        </tr>
+                        <tr>
+                            <td><strong>UCP 600 Rule Coverage</strong></td>
+                            <td>Partial manual checklist</td>
+                            <td class="col-highlight">Selected deterministic field checks</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Demurrage Exposure Risk</strong></td>
+                            <td>High ($3,000 to $10,000 per container penalty)</td>
+                            <td class="col-highlight">Zero demurrage through pre-shipment clearance</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Customs HS Classification</strong></td>
+                            <td>Manual tariff book lookup (hours to days)</td>
+                            <td class="col-highlight">WCO 8-digit engine with statutory duty computation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Audit Traceability &amp; Proof</strong></td>
+                            <td>Paper notes, rubber stamps, email threads</td>
+                            <td class="col-highlight">SHA-256 sealed PDF certificate with QR verification</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AI Agent Integration (MCP)</strong></td>
+                            <td>Not supported</td>
+                            <td class="col-highlight">Native Model Context Protocol (SSE) for Claude/Cursor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Live Workspace -->
+    <section id="workspace" class="workspace-section" aria-labelledby="workspace-heading">
+        <div class="section-container">
+            <div class="section-lead">
+                <h2 id="workspace-heading">Interactive Trade Audit Workspace</h2>
+                <p>Upload real trade documents, paste SWIFT messages, or enter parameters manually. The engine runs instantly.</p>
+            </div>
+
+            <!-- Workspace Tabs -->
+            <div class="workspace-layout">
+                <nav class="sub-nav" aria-label="Platform modules" style="background: transparent; padding: 0; margin-bottom: 1.5rem;">
+                    <div class="tabs-flex">
+                        <button class="nav-tab active" data-tab="tab-upload" id="btn-tab-upload" aria-selected="true" role="tab">
+                            Document Upload &amp; OCR
+                        </button>
+                        <button class="nav-tab" data-tab="tab-swift" id="btn-tab-swift" aria-selected="false" role="tab">
+                            SWIFT MT700 Parser
+                        </button>
+                        <button class="nav-tab" data-tab="tab-auditor" id="btn-tab-auditor" aria-selected="false" role="tab">
+                            Manual L/C Auditor
+                        </button>
+                        <button class="nav-tab" data-tab="tab-hscode" id="btn-tab-hscode" aria-selected="false" role="tab">
+                            WCO HS Code &amp; Tariff
+                        </button>
+                        <button class="nav-tab" data-tab="tab-graph" id="btn-tab-graph" aria-selected="false" role="tab">
+                            Graph RAG Navigator
+                        </button>
+                        <button class="nav-tab" data-tab="tab-rag" id="btn-tab-rag" aria-selected="false" role="tab">
+                            Contextual RAG Corpus
+                        </button>
+                        <button class="nav-tab" data-tab="tab-history" id="btn-tab-history" aria-selected="false" role="tab">
+                            Audit Ledger &amp; History
+                        </button>
+                    </div>
+                </nav>
+
+            <!-- TAB 1: Document Upload & OCR -->
+            <div id="tab-upload" class="tab-pane active" aria-labelledby="btn-tab-upload" role="tabpanel">
+                <div class="grid-two-col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Upload Trade Documents</h3>
+                            <span class="badge badge-accent">PDF / Image / SWIFT</span>
+                        </div>
+                        <div class="card-body">
+                            <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: 1rem;">
+                                Upload scanned PDFs or images of your Letter of Credit, Commercial Invoice, or Bill of Lading. The system reads and extracts all fields automatically.
+                            </p>
+
+                            <!-- Drag and Drop Zone -->
+                            <div id="drop-zone" class="drop-zone" role="button" tabindex="0" aria-label="File upload drop zone. Click or drag files here.">
+                                <div class="drop-zone-icon" aria-hidden="true">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                        <polyline points="17 8 12 3 7 8"/>
+                                        <line x1="12" y1="3" x2="12" y2="15"/>
+                                    </svg>
+                                </div>
+                                <p class="drop-zone-text">Drag &amp; drop files here, or click to select</p>
+                                <p class="drop-zone-hint">Accepts: PDF, JPG, PNG, TIFF, WebP (max 15MB per file)</p>
+                                <input type="file" id="file-input" multiple accept=".pdf,.jpg,.jpeg,.png,.tiff,.tif,.webp" style="display: none;">
+                            </div>
+
+                            <!-- File List -->
+                            <div id="file-list" class="file-list" style="display: none; margin-top: 1rem;"></div>
+
+                            <!-- Also SWIFT text paste -->
+                            <div class="form-group" style="margin-top: 1rem;">
+                                <label for="upload-swift-message">Also attach SWIFT MT700 message (optional):</label>
+                                <textarea id="upload-swift-message" class="input-textarea" rows="3" placeholder="{1:F01...}{4: :40A:IRREVOCABLE ...}"></textarea>
+                            </div>
+
+                            <div class="action-btn-group" style="margin-top: 1rem;">
+                                <button class="btn btn-secondary" id="btn-clear-upload">Clear All</button>
+                                <button class="btn btn-secondary" id="btn-load-sample-upload">Load Sample Trade Package</button>
+                                <button class="btn btn-primary" id="btn-upload-and-audit">Upload &amp; Run Full Audit</button>
+                            </div>
+
+                            <!-- Upload Progress -->
+                            <div id="upload-progress" style="display: none; margin-top: 1rem;">
+                                <div class="progress-bar-container">
+                                    <div id="upload-progress-bar" class="progress-bar" style="width: 0%"></div>
+                                </div>
+                                <p id="upload-progress-label" style="font-size: 0.8rem; color: var(--color-text-secondary); margin-top: 0.4rem;">Processing...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Audit Results</h3>
+                            <span id="upload-audit-badge" class="badge badge-neutral">Waiting for upload</span>
+                        </div>
+                        <div class="card-body">
+                            <div id="upload-audit-output" class="empty-state">
+                                <p>Upload documents above to run a full UCP 600 compliance audit. The AI engine will extract all fields and check every discrepancy.</p>
+                            </div>
+                            <div id="upload-cert-section" style="display: none; margin-top: 1rem; padding: 1rem; background: var(--color-bg-success-light, #f0fdf4); border: 1px solid #bbf7d0; border-radius: 8px;">
+                                <h4 style="color: #166534; margin-bottom: 0.5rem;">Compliance Certificate Ready</h4>
+                                <p style="font-size: 0.875rem; color: #166534; margin-bottom: 0.75rem;">A tamper-evident SHA-256 signed PDF certificate has been generated for this audit.</p>
+                                <a id="upload-cert-download-link" href="#" class="btn btn-primary" target="_blank">Download PDF Certificate</a>
+                                <a id="upload-cert-verify-link" href="#" class="btn btn-secondary" target="_blank" style="margin-left: 0.5rem;">Verify Online</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: SWIFT MT700 Parser -->
+            <div id="tab-swift" class="tab-pane" aria-labelledby="btn-tab-swift" role="tabpanel">
+                <div class="grid-two-col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Paste Raw SWIFT MT700 Message</h3>
+                            <span class="badge badge-accent">ISO 15022</span>
+                        </div>
+                        <div class="card-body">
+                            <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: 1rem;">
+                                Paste the raw SWIFT FIN message received from the issuing bank. All standard field tags are parsed: :40A:, :45A:, :46A:, :47A:, :50:, :59:, :32B: and more.
+                            </p>
+                            <div class="form-group">
+                                <label for="swift-raw-input">Raw SWIFT MT700 Message:</label>
+                                <textarea id="swift-raw-input" class="input-textarea" rows="14" placeholder="{1:F01ABABDHDH0000000000}{2:I700XXXXXXXXXBBBBB}{4:&#10;:40A:IRREVOCABLE&#10;:20:LC2026/ABBL/001&#10;:31C:261001&#10;:31D:261130 DHAKA&#10;:50:H&M HENNES & MAURITZ GBC AB&#10;STOCKHOLM, SWEDEN&#10;:59:APEX TEXTILE MILLS LTD&#10;DHAKA, BANGLADESH&#10;:32B:USD125000,00&#10;:45A:100% COMBED COTTON KNITTED T-SHIRTS&#10;:44A:CHATTOGRAM PORT, BANGLADESH&#10;:44B:PORT OF ROTTERDAM, NETHERLANDS&#10;-}"></textarea>
+                            </div>
+                            <div class="action-btn-group" style="margin-top: 0.75rem;">
+                                <button class="btn btn-secondary" id="btn-load-swift-sample">Load Sample MT700</button>
+                                <button class="btn btn-primary" id="btn-parse-swift">Parse &amp; Audit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Parsed L/C Fields</h3>
+                            <span id="swift-parse-badge" class="badge badge-neutral">Not parsed yet</span>
+                        </div>
+                        <div class="card-body">
+                            <div id="swift-parse-output" class="empty-state">
+                                <p>Paste a SWIFT MT700 message and click "Parse &amp; Audit" to extract all field values and run the UCP 600 audit.</p>
+                            </div>
+                            <div id="swift-cert-section" style="display: none; margin-top: 1rem; padding: 1rem; background: var(--color-bg-success-light, #f0fdf4); border: 1px solid #bbf7d0; border-radius: 8px;">
+                                <h4 style="color: #166534; margin-bottom: 0.5rem;">Audit Certificate Ready</h4>
+                                <a id="swift-cert-download-link" href="#" class="btn btn-primary" target="_blank">Download PDF Certificate</a>
+                                <a id="swift-cert-verify-link" href="#" class="btn btn-secondary" target="_blank" style="margin-left: 0.5rem;">Verify Online</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: Manual L/C Discrepancy Auditor -->
+            <div id="tab-auditor" class="tab-pane" aria-labelledby="btn-tab-auditor" role="tabpanel">
+                <div class="action-btn-group" style="margin-bottom: 1rem;">
+                    <button class="btn btn-secondary" id="btn-load-sample-clean">Load Compliant Sample</button>
+                    <button class="btn btn-secondary" id="btn-load-sample-discrepant">Load Discrepant Sample</button>
+                    <button class="btn btn-primary" id="btn-run-audit">Run UCP 600 Audit</button>
+                </div>
+
+                <div class="grid-two-col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Document Input Parameters</h3>
+                            <span class="badge badge-neutral">4 Documents Synchronized</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="input-lc-beneficiary">L/C Beneficiary (Field 59):</label>
+                                <input type="text" id="input-lc-beneficiary" class="input-text" value="Apex Textile Mills Ltd, Dhaka, Bangladesh">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="input-inv-beneficiary">Commercial Invoice Beneficiary:</label>
+                                <input type="text" id="input-inv-beneficiary" class="input-text" value="Apex Textile Mills Ltd, Dhaka, Bangladesh">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="input-lc-goods">L/C Goods Description (Field 45A verbatim):</label>
+                                <textarea id="input-lc-goods" class="input-textarea" rows="2">100% Combed Cotton Knitted T-Shirts in Assorted Sizes (Export Quality)</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="input-inv-goods">Commercial Invoice Goods Description:</label>
+                                <textarea id="input-inv-goods" class="input-textarea" rows="2">100% Combed Cotton Knitted T-Shirts in Assorted Sizes (Export Quality)</textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-half">
+                                    <label for="input-lc-amount">L/C Value (USD):</label>
+                                    <input type="number" id="input-lc-amount" class="input-text" value="125000">
+                                </div>
+                                <div class="form-group col-half">
+                                    <label for="input-inv-amount">Invoice Value (USD):</label>
+                                    <input type="number" id="input-inv-amount" class="input-text" value="125000">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-half">
+                                    <label for="input-lc-pod">L/C Port of Discharge (Field 44F):</label>
+                                    <input type="text" id="input-lc-pod" class="input-text" value="Port of Rotterdam, Netherlands">
+                                </div>
+                                <div class="form-group col-half">
+                                    <label for="input-bl-pod">Bill of Lading Discharge Port:</label>
+                                    <input type="text" id="input-bl-pod" class="input-text" value="Port of Rotterdam, Netherlands">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-half">
+                                    <label for="input-lc-date">Latest Shipment Date (Field 44C):</label>
+                                    <input type="date" id="input-lc-date" class="input-text" value="2026-11-15">
+                                </div>
+                                <div class="form-group col-half">
+                                    <label for="input-bl-date">B/L Clean On-Board Date:</label>
+                                    <input type="date" id="input-bl-date" class="input-text" value="2026-11-10">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Screening Findings</h3>
+                            <span id="audit-badge-status" class="badge badge-warning">Run screening</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="score-display">
+                                <div class="score-number" id="audit-score-num">N/A</div>
+                                <div class="score-meta">
+                                    <span class="score-title">Checked-field match rate</span>
+                                    <span class="score-subtitle" id="audit-summary-text">Run screening to view results. Automated results do not replace professional review.</span>
+                                </div>
+                            </div>
+
+                            <div id="discrepancy-container" class="discrepancy-list">
+                                <div class="empty-state">
+                                    <p>No screening has been run.</p>
+                                </div>
+                            </div>
+
+                            <div class="passed-checks-section">
+                                <h4>Verified Checks</h4>
+                                <ul id="passed-checks-list" class="checklist">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: WCO HS Code & Tariff Engine -->
+            <div id="tab-hscode" class="tab-pane" aria-labelledby="btn-tab-hscode" role="tabpanel">
+                <div class="grid-two-col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Commodity Description &amp; Value</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="input-commodity-desc">Enter Commodity or Item Description:</label>
+                                <textarea id="input-commodity-desc" class="input-textarea" rows="3" placeholder="e.g. 100% cotton knitted t-shirts for men">Men's cotton knitted t-shirts with printed graphics</textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-half">
+                                    <label for="input-invoice-val">Invoice Value (USD):</label>
+                                    <input type="number" id="input-invoice-val" class="input-text" value="50000">
+                                </div>
+                                <div class="form-group col-half">
+                                <label for="input-exchange-rate">Current USD to BDT Rate:</label>
+                                    <input type="number" id="input-exchange-rate" class="input-text" value="122.50" placeholder="e.g. 122.50" min="0.0001" step="0.0001">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" id="btn-classify-hs">Classify &amp; Compute Duty</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Candidate Classification &amp; Indicative Calculation</h3>
+                            <span id="hs-code-pill" class="badge badge-accent">Not yet classified</span>
+                        </div>
+                        <div class="card-body">
+                            <div id="hscode-result-box">
+                                <div class="tariff-summary-grid">
+                                    <div class="stat-box">
+                                        <span class="stat-label">Assessable Value (BDT)</span>
+                                <span class="stat-value" id="val-assessable">Unavailable</span>
+                                    </div>
+                                    <div class="stat-box">
+                                        <span class="stat-label">Customs Duty (25%)</span>
+                                <span class="stat-value" id="val-cd">Unavailable</span>
+                                    </div>
+                                    <div class="stat-box">
+                                        <span class="stat-label">VAT (15%)</span>
+                                <span class="stat-value" id="val-vat">Unavailable</span>
+                                    </div>
+                                    <div class="stat-box">
+                                        <span class="stat-label">Total Customs Duties</span>
+                                <span class="stat-value highlight" id="val-total-tax">No verified tariff estimate</span>
+                                    </div>
+                                </div>
+
+                                <div class="rule-box">
+                                    <h4>Review Note:</h4>
+                                    <p id="val-origin-rule">Run a candidate search. Any result requires classification and tariff review.</p>
+                                </div>
+
+                                <div class="rule-box">
+                                    <h4>Candidate Supporting Documents:</h4>
+                                    <ul id="val-docs-list" class="checklist"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: Graph RAG Trade Navigator -->
+            <div id="tab-graph" class="tab-pane" aria-labelledby="btn-tab-graph" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Interactive Trade Knowledge Graph Topology</h3>
+                        <div class="graph-legend">
+                            <span class="legend-dot dot-commodity"></span> Commodity
+                            <span class="legend-dot dot-hscode"></span> HS Code
+                            <span class="legend-dot dot-port"></span> Port
+                            <span class="legend-dot dot-fta"></span> Trade Pact
+                            <span class="legend-dot dot-reg"></span> Regulation
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-half">
+                                <label for="select-graph-commodity">Select Trade Commodity:</label>
+                                <select id="select-graph-commodity" class="input-select">
+                                    <option value="COMMODITY_COTTON_TSHIRT">Cotton T-Shirt (Knitted) [Chapter 61]</option>
+                                    <option value="COMMODITY_DENIM_TROUSER">Men's Denim Trousers (Woven) [Chapter 62]</option>
+                                    <option value="COMMODITY_LEATHER_SHOES">Leather Ankle Shoes [Chapter 64]</option>
+                                    <option value="COMMODITY_SOLAR_INVERTER">Industrial Solar Inverter [Chapter 85]</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-half">
+                                <label for="select-graph-port">Destination Port:</label>
+                                <select id="select-graph-port" class="input-select">
+                                    <option value="PORT_ROTTERDAM">Port of Rotterdam (Netherlands)</option>
+                                    <option value="PORT_HAMBURG">Port of Hamburg (Germany)</option>
+                                    <option value="PORT_NEWYORK">Port of New York / New Jersey (USA)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="btn-traverse-graph">Traverse Graph RAG Path</button>
+
+                        <div id="graph-traversal-output" class="graph-traversal-box">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 6: Contextual RAG Legal Corpus -->
+            <div id="tab-rag" class="tab-pane" aria-labelledby="btn-tab-rag" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Search Trade Regulations, UCP 600 &amp; NBR Acts</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="search-bar-row">
+                            <input type="text" id="input-rag-query" class="input-text" placeholder="e.g. Article 18 invoice goods description or GRI Rule 3" value="goods description invoice UCP 600">
+                            <button class="btn btn-primary" id="btn-search-rag">Search Contextual Corpus</button>
+                        </div>
+
+                        <div id="rag-results-container" class="rag-results-list">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 7: Audit Ledger & History -->
+            <div id="tab-history" class="tab-pane" aria-labelledby="btn-tab-history" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Enterprise Multi-Tenant Audit Ledger</h3>
+                        <span class="badge badge-accent">Supabase Cloud Ledger</span>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: 1rem;">
+                            View persisted audit records and certificate links associated with your organization.
+                        </p>
+                        <div class="form-row" style="align-items: flex-end; margin-bottom: 1.5rem; gap: 1rem;">
+                            <div class="form-group col-half" style="margin-bottom: 0;">
+                                <label for="input-org-api-key">Organization API Key:</label>
+                                <input type="password" id="input-org-api-key" class="input-text" placeholder="Enter your organization API key" autocomplete="off" spellcheck="false">
+                            </div>
+                            <div class="col-half" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                                <button class="btn btn-primary" id="btn-fetch-history">Fetch Ledger Records</button>
+                            </div>
+                        </div>
+
+                        <div id="history-org-meta" style="display: none; margin-bottom: 1rem; padding: 0.75rem 1rem; background: #F1F5F9; border-radius: 6px; font-size: 0.875rem;">
+                            <strong>Organization:</strong> <span id="history-org-name" style="font-weight: 600; color: #0A192F;"></span>
+                            &bull; <strong>Total Recorded Audits:</strong> <span id="history-org-count" style="font-weight: 600;"></span>
+                        </div>
+
+                        <div id="history-table-container">
+                            <div class="empty-state">
+                                <p>Enter your organization API key. The key is sent in an HTTPS request header and is not placed in the URL.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- AI Agent Integration via MCP Section -->
+    <section id="ai-integration" class="ai-section" aria-labelledby="ai-heading">
+        <div class="section-container">
+            <div class="section-lead">
+                <h2 id="ai-heading">Connect Any AI Agent via Model Context Protocol (MCP)</h2>
+                <p>Connect an authenticated AI client through the Model Context Protocol Streamable HTTP endpoint.</p>
+            </div>
+
+            <div class="grid-two-col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Claude Desktop / Cursor / Gemini Setup</h3>
+                        <span class="badge badge-accent">Streamable HTTP</span>
+                    </div>
+                    <div class="card-body">
+                        <p>Use your organization API key as an HTTP header. Keep the key in a local secret store and do not paste it into a shared configuration file:</p>
+                        <pre class="code-block" id="mcp-config-code">{
+  "mcpServers": {
+    "portnexus": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://portnexus.equisaas-bd.com/api/mcp", "--header", "x-api-key: ${PORTNEXUS_API_KEY}"]
+    }
+  }
+}</pre>
+                        <button class="btn btn-secondary" id="btn-copy-mcp-config">Copy MCP Configuration</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Exposed MCP Tools for AI Agents</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="checklist">
+                            <li><strong>audit_letter_of_credit:</strong> Selected field comparisons with unresolved items marked for review.</li>
+                            <li><strong>classify_hs_code:</strong> Limited keyword candidates and clearly marked illustrative calculations.</li>
+                            <li><strong>query_trade_graph:</strong> Traverses Graph RAG across commodities, port lanes, and trade pacts.</li>
+                            <li><strong>search_trade_regulations:</strong> Contextual RAG search across national and global customs acts.</li>
+                            <li><strong>parse_swift_mt700:</strong> Parses raw ISO 15022 SWIFT FIN messages into structured JSON.</li>
+                        </ul>
+                        <div style="margin-top: 1.25rem;">
+                            <a href="/docs.html" class="btn btn-primary">Read Full Documentation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Untapped Demand FAQ Section (Voice & AI Search Optimization) -->
+    <section id="faq" class="faq-section" aria-labelledby="faq-heading">
+        <div class="section-container">
+            <div class="section-lead">
+                <h2 id="faq-heading">Frequently Asked Questions on Trade Compliance &amp; L/C Auditing</h2>
+                <p>Direct answers to high-intent questions regarding export documentary compliance, UCP 600 rules, and customs clearance.</p>
+            </div>
+
+            <div class="faq-grid">
+                <article class="faq-card">
+                    <h3>What does PortNexus do?</h3>
+                    <p>PortNexus compares selected fields extracted from trade documents and flags missing or differing values for qualified review. It does not decide bank acceptance, guarantee payment, or determine customs clearance.</p>
+                </article>
+                <article class="faq-card">
+                    <h3>How does PortNexus audit documents under ICC UCP 600 Article 18(c)?</h3>
+                    <p>PortNexus can compare extracted invoice and credit descriptions. A difference is routed for qualified review because automated text comparison alone cannot decide whether the descriptions correspond under the credit and applicable banking practice.</p>
+                </article>
+                <article class="faq-card">
+                    <h3>How does the candidate HS code feature work?</h3>
+                    <p>The current sample classifier returns limited keyword candidates. Bundled duty rates are unverified demonstration data and must not be used for a customs declaration.</p>
+                </article>
+                <article class="faq-card">
+                    <h3>How can autonomous AI assistants connect to PortNexus via Model Context Protocol (MCP)?</h3>
+                    <p>PortNexus exposes a stateless Model Context Protocol endpoint at https://portnexus.equisaas-bd.com/api/mcp using Streamable HTTP JSON-RPC. Protected operations require an organization API key.</p>
+                </article>
+                <article class="faq-card">
+                    <h3>What is the PortNexus Pre-Customs Clearance Inspection Certificate?</h3>
+                    <p>When evidence persistence is enabled, PortNexus can produce a PDF with a QR link and HMAC-SHA-256 seal that authenticates a stored audit snapshot. It does not certify customs clearance or guarantee acceptance by a bank.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- App Footer -->
+    <footer class="app-footer" role="contentinfo">
+        <div class="footer-container" style="max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; width: 100%;">
+                <div style="display: flex; align-items: center; gap: 0.85rem;">
+                    <img src="/favicon.svg" alt="PortNexus Emblem" width="34" height="34" style="border-radius: 8px; flex-shrink: 0;">
+                    <div>
+                        <div><strong>PortNexus Enterprise</strong> &bull; Autonomous Trade Compliance &amp; L/C Risk Management</div>
+                        <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 0.15rem;">Conforms to ICC UCP 600 banking rules &bull; WCO Harmonized System &bull; ISO 15022</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 0.75rem 1.25rem; align-items: center; flex-wrap: wrap;">
+                    <a href="/docs.html" style="color: var(--color-text-secondary); text-decoration: none; font-weight: 500;">Documentation</a>
+                    <a href="https://github.com/kholipha-ahmmad-al-amin/PortNexus" target="_blank" rel="noopener" style="color: var(--color-text-secondary); text-decoration: none; font-weight: 500;">GitHub</a>
+                    <a href="/api/health" target="_blank" rel="noopener" style="color: var(--color-text-secondary); text-decoration: none; font-weight: 500;">API Status</a>
+                    <a href="/sitemap.xml" target="_blank" rel="noopener" style="color: var(--color-text-secondary); text-decoration: none; font-weight: 500;">Sitemap</a>
+                    <a href="/llms.txt" target="_blank" rel="noopener" style="color: var(--color-text-secondary); text-decoration: none; font-weight: 500;">llms.txt</a>
+                </div>
+            </div>
+
+            <!-- Team EquiSaaS BD Attribution -->
+            <div class="agency-attribution-bar">
+                <div>Project by <a href="https://equisaas-bd.com/" target="_blank" rel="noopener">Team EquiSaaS BD</a></div>
+                <div>Autonomous TradeTech &bull; CloudCamp Bangladesh 2026</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/app.js"></script>
+</body>
+</html>

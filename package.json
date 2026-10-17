@@ -1,0 +1,45 @@
+{
+  "name": "portnexus",
+  "version": "1.0.0",
+  "description": "Autonomous Cross-Border Trade Compliance, Customs HS-Code Engine & L/C Discrepancy Auditor",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test",
+    "test:playwright": "npx playwright test",
+    "audit:contrast": "node scripts/audit_contrast.js",
+    "test:seo": "node scripts/verify_seo.js"
+  },
+  "keywords": [
+    "trade-tech",
+    "customs",
+    "compliance",
+    "mcp",
+    "rag",
+    "graph-rag",
+    "export-import",
+    "letter-of-credit",
+    "cloudcamp-2026"
+  ],
+  "author": "EquiSaaS BD / PortNexus Team",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@google/genai": "^2.30.0",
+    "@supabase/supabase-js": "^2.118.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "multer": "^2.4.0",
+    "pdf-parse": "^2.4.5",
+    "pdfkit": "^0.20.2",
+    "qrcode": "^1.5.4",
+    "tesseract.js": "^7.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "axe-core": "^4.10.2",
+    "playwright": "^1.50.1"
+  }
+}

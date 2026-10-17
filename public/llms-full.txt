@@ -1,0 +1,60 @@
+# PortNexus: Current Technical Scope
+
+This file describes the shipped code visible in the repository. It is not a legal opinion, official tariff schedule, bank certification, or production security attestation.
+
+## Product
+
+PortNexus screens selected fields from trade documents and returns review items. A qualified trade finance reviewer must decide whether the presentation complies with the credit and applicable rules. PortNexus does not guarantee payment, bank acceptance, customs clearance, tariff classification, or avoidance of demurrage.
+
+## Implemented modules
+
+- Express REST API and static web application.
+- SWIFT MT700 field extraction for the parser's supported tags. Parser output is not a bank-authenticated FIN message.
+- Document extraction through the configured Google Gemini model. Tesseract OCR handles supported image files. Local scanned-PDF page rendering is not configured.
+- Eight selected field-comparison groups in `lib/ucp600_rules.js`. Missing or differing evidence produces `REVIEW_REQUIRED`; a successful result only means the checked extracted fields matched.
+- Keyword HS candidates from a small bundled sample. Bundled rates have no verified source or effective date. Any displayed calculation is illustrative only.
+- Static illustrative trade graph and local keyword reference corpus. Neither is a maintained regulatory source.
+- Stateless MCP Streamable HTTP JSON-RPC at `/api/mcp`, with `initialize`, `ping`, `tools/list`, and `tools/call` support.
+- HMAC-SHA-256 audit snapshot sealing and PDF generation when signing, authenticated organization access, database persistence, and evidence persistence are configured.
+- Multi-tenant audit history using organization API keys stored as SHA-256 digests after applying the checked-in Supabase migration.
+
+## API endpoints
+
+- `GET /api/health`: returns readiness and database connectivity.
+- `POST /api/swift/parse`: parse and validate a supplied MT700 message.
+- `POST /api/documents/upload`: extract candidate fields from supported files.
+- `POST /api/documents/upload-and-audit`: extract and screen a document package.
+- `POST /api/audit/full`: screen supplied documents or a SWIFT message.
+- `POST /api/audit/trade-package`: run selected field comparisons.
+- `POST /api/hscode/classify`: return candidate classification and optional illustrative calculation.
+- `GET /api/rag/search`: keyword search of the unverified local corpus.
+- `POST /api/graph/query`: query the static illustrative graph.
+- `POST /api/mcp`: stateless MCP Streamable HTTP JSON-RPC.
+- `GET /verify?id=:certId`: verify an HMAC-sealed persisted audit snapshot.
+- `GET /api/certificate/:certId/download`: regenerate a PDF from the signed stored snapshot.
+- `GET /api/history`: organization-scoped audit history. Send `x-api-key` in a request header.
+
+## Security and storage configuration
+
+- In production, protected audit and upload routes require an organization key in the `x-api-key` header.
+- Apply `supabase/migrations/202610170001_enterprise_security_and_certificates.sql` before deploying the hashed-key and certificate-snapshot code.
+- Production database access requires a server-only `SUPABASE_SERVICE_ROLE_KEY`. Never expose this value to browser code.
+- Set a unique random `CERTIFICATE_SIGNING_SECRET` of at least 32 bytes.
+- `PERSIST_AUDIT_EVIDENCE` defaults to false. Enable it only after defining customer consent, retention, expiry, deletion, and backup policies.
+- OCR text and structured OCR output are not written to `document_vault` by default. Optional document metadata persistence is separately controlled by `PERSIST_DOCUMENT_METADATA`.
+- Per-process request limits are not a substitute for a shared production rate-limit store or a managed WAF.
+
+## Model Context Protocol
+
+The MCP endpoint uses the standard Streamable HTTP transport with JSON-RPC over `POST /api/mcp`. The older `/api/mcp/sse` endpoint was only an initialization placeholder and now returns HTTP 410. Protected MCP requests use the `x-api-key` header.
+
+Current tools: `audit_letter_of_credit`, `classify_hs_code`, `query_trade_graph`, `search_trade_regulations`, and `parse_swift_mt700`.
+
+## Remaining launch work
+
+- Run and pass browser-based accessibility and functional tests in an environment where Chromium can launch.
+- Apply and review the Supabase migration; verify RLS, service-role grants, backup, restore, retention, and deletion behavior in the target project.
+- Configure production secrets, issue and rotate tenant credentials, and validate end-to-end health.
+- Replace sample HS and graph content with licensed, source-cited, versioned schedules and regulatory material.
+- Validate the selected audit rules with trade finance professionals and a representative, consented test corpus.
+- Add distributed rate limiting, abuse monitoring, incident response, customer support, operational SLOs, and a non-destructive release pipeline.
